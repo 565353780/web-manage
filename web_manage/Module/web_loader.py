@@ -193,6 +193,9 @@ class WebLoader(object):
             "arguments[0].setAttribute('value',arguments[1])", elem, value)
         return True
 
+    def getValue(self, xpath):
+        return self.driver.find_element(By.XPATH, xpath)
+
     def clickButton(self, xpath):
         elem = self.driver.find_element(By.XPATH, xpath)
         elem.click()
@@ -215,6 +218,8 @@ class WebLoader(object):
     def runStep(self, teacher, page):
         self.openTab(self.wait_time)
         self.outputWebInfo()
+        value = self.getValue('/html/body/div[6]/div/div[3]/div[2]/div/div[4]/div[2]/div[1]/div/div[1]')
+        print(value)
         exit()
         self.setValue(self.xpath_dict['paper'], '')
         self.clickButton(self.xpath_dict['next_page'])
